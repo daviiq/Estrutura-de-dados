@@ -1,0 +1,11 @@
+A conta bancaria deve conter um objeto do tipo pessoa que será associada a mesma, um identificador unico, a agencia que cuida deste usuario e conta, e deve conter o saldo e limite do usuario.
+
+Ele deve ser armazenado em uma estrutura de chave valor.
+
+A inicialização de uma conta bancaria deve conter todos os dados para ser inicializada e ira sempre ter saldo 0.
+
+Metodos
+
+- depositar(valor) →Sera o metodo responsavel para adicionar valor monetario ao saldo da conta do usuario.
+- saque(valor) - Sera o metoro responsavel por retirar o valor monetario do saldo do usuario.
+- empresitmo(contrato) → Sera o metodo para que o usuario realize um compromisso de credito com o banco.

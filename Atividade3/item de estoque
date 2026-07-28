@@ -1,0 +1,9 @@
+Deve possuir um código de barras para identificação, quantidade disponível, peso, dimensões, e um objeto do tipo item que contem as informações essenciais do item.
+
+O item deve pertencer a uma lista organizada no metodo chave unica e valor, o codigo de barras pode ser utilizado como chave e conter um objeto do tipo item estoque.
+
+Metodos
+
+- adicioanarItem(item) →Adiciona o mesmo a lista como ultimo da mesma
+- removerItem(codigo) → Removo o item associado ao codigo.
+- consultarItem(codigo) → retorna o item pertencente aquele codigo.

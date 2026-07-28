@@ -1,0 +1,7 @@
+O aluno deve conter um objeto de tipo Pessoa, um identificador único dele na organização como uma matricula e deve conter o curso e materias que o mesmo esta inserido. O controle será por meio de uma lista sequencial chave valor onde a chave ser a matricula e o valor sera o aluno.
+
+Metodos
+
+- adicioanarAluno(aluno) →Adiciona o mesmo a lista como ultimo da mesma
+- removerAluno(matricula) → Removo o aluno associado a matricula.
+- consultarAluno(matriculo) → retorna o aluno pertencente aquela matricula.

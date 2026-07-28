@@ -1,0 +1,12 @@
+m livro deve possuir um identificador único valido ISBN, um Titulo,Escritor, Editora, ano de lançamento, numero de paginas e versão. o ideal para armazenamento de dados de um livro será uma estrutura de hasmap, onde a chave será o ISBN e valor será o objeto do tipo livro.
+
+O livro deve ser criado inicialmente de duas formas. Ainda em criação, ja com as informação de Autor, editora e ISBN; as demais informações devem ter métodos de Set para estarem sendo definidas e consultas através do ISBN com métodos GET. A  criação pode contemplar também um construtor completo onde já se define todas as informações do livro.
+
+Metodos de busca
+
+- buscarLivro(ISBN) → deve receber o identificar unico que ja retorna o objeto de valor livro dentro da estrutura.
+- buscarLivroTitulo(titulo) → deve receber o titulo e retornar todos os objetos que possuem o titulo ou semelhantes.
+- buscarLivroAno(lançamento) → deve receber o ano de lançamento e retornar todos os livros do ano especifico.
+- buscarLivroEscritor(escritor) → deve receber a autora e retornar todos as obras da mesma
+- deletarLivro(ISBN) → a eclusão de um livro deve ser feita diretamente pelo seu identificador.
+- adicionarLivro(ISBN, livro) → a inserção de um livro deve ser feita com seu identificador e o objeto livro.

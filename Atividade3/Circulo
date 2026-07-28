@@ -1,0 +1,13 @@
+Um circulo deve conter principalmente a informação  do Raio, pois dela conseguimos obter as características do circulo.
+
+A criação do circulo ja deve conter especificamente seu tamanho de raio e as demais informações podem ser criadas a partir do raio durante a criação.
+
+A consulta sera atravez de metodos get e não deve ter metodo set para o circulo, pois a alteração do raio incide na criação de um outro circulo.
+
+Ele pode ser armazenado em uma lista.
+
+Metodos
+
+- inserirCirculo(raio) → Um raio define um circulo, pois isto apenas esta informação basta.
+- deletarCirculo(raio) → deleta o circulo da lista.
+- consultarCirculo(raio) → retorna se a lista possui ou não possui um circulo com este raio.

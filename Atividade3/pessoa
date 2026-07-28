@@ -1,0 +1,11 @@
+A pessoa deve conter, nome, cpf, idade e data de nascimento.
+
+A instanciação de uma pessoa deve conter todas as informações necessárias para sua existencia. Ela deve possuir apenas metodos set para o nome, os demais devem ser apenas get.
+
+As pessoas devem ser armazenadas em uma estrutura onde a chave de consulta deve ser o CPF ( identificador unico ) e o valor deve ser a pessoa.
+
+Metodos
+
+- inserirPessoa(pessoa) → inseri na lsita
+- deletarPessoa(cpf) → deleta da lista consultando o CPF
+- editarPessoa(cpf) → retorna a pessoa como um get

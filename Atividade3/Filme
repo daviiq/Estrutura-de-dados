@@ -1,0 +1,14 @@
+Um filme deve possuir listas para os atores e diretores. Deve possuir titulo, lançamento, duração e categoria. Alem do identificador unico ISAN.
+
+A consulta deve ser feita em uma estretura de chave valor, onde a chave sera o ISAN e o valor o objeto do tipo filme.
+
+O filme deve conter metodos set e get para os elementos, apenas o ISAN que deve possuir apenas metodo Get.
+
+Metodos
+
+- buscarFilme(ISAN) → deve receber o identificar unico que ja retorna o objeto de valor filme dentro da estrutura.
+- buscarFilmeTitulo(titulo) → deve receber o titulo e retornar todos os objetos que possuem o titulo ou semelhantes.
+- buscarFilmeAno(lançamento) → deve receber o ano de lançamento e retornar todos os filmes do ano especifico.
+- buscarFilmeDiretor(diretror) → deve receber o diretor e retornar todos as obras do mesmo.
+- deletarFilme(ISAN) → a eclusão de um filme deve ser feita diretamente pelo seu identificador.
+- adicionarLivro(ISAN, filme) → a inserção de um filme deve ser feita com seu identificador e o objeto Filme.
