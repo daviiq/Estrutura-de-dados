@@ -1,47 +1,41 @@
 package org.example.Atividade00.Questao1;
-
+import java.util.ArrayList;
 public class Projeto {
 
     private String nome;
     private int ID;
     private Gerente gerente;
-    private Funcionario[] equipe;
+    private ArrayList<Funcionario> equipe;
     private boolean finalizado;
 
-    public Projeto(String nome, int ID, Gerente gerente, Funcionario[] equipe, boolean finalizado) {
+    public Projeto(String nome, int ID, Gerente gerente, boolean estado) {
         this.nome = nome;
         this.ID = ID;
         this.gerente = gerente;
-        this.equipe = equipe;
-        this.finalizado = finalizado;
+        this.finalizado = estado;
+        this.equipe = new ArrayList<>();
     }
 
-    //Nome do projeto
     public String getNome() {
         return nome;
     }
 
-    //Verifica se está finalizado
     public boolean isFinalizado() {
         return finalizado;
     }
 
-    //Retorna o Array da equipe
-    public Funcionario[] getEquipe() {
+    public ArrayList<Funcionario> getEquipe() {
         return equipe;
     }
 
-    //Retorna a quantidade de funcionários na equipe
     public int getQuantidadeFuncionarios() {
-        return equipe.length;
+        return equipe.toArray().length;
     }
 
-    //Retorna as informações do gerente
     public Gerente getGerente() {
         return gerente;
     }
 
-    //Calcula o Custo total do projeto
     public double calcularCustoTotal() {
 
         double total = gerente.getSalario(this);
@@ -52,9 +46,8 @@ public class Projeto {
         return total;
     }
 
-    //Adiciona o funcionário na equipe do projeto
-    public void adicionarFuncionario(Funcionario funcionario, int posicao) {
-        equipe[posicao] = funcionario;
+    public void adicionarFuncionario(Funcionario funcionario) {
+        equipe.add(funcionario);
     }
 
     /*Lista as informações gerais do projeto
@@ -70,7 +63,7 @@ public class Projeto {
         System.out.println(gerente.getNome() +
                 " - R$ " + gerente.getSalario(this));
 
-        System.out.println("\nEquipe:");
+        System.out.println("\nEquipe: "+getNome());
 
         for (Funcionario funcionario : equipe) {
             System.out.println(funcionario.getNome() +

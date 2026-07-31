@@ -2,8 +2,6 @@ package org.example.Atividade00.Questao1;
 
 public class Gerente extends Funcionario{
 
-    public String nome;
-    public double salarioBase;
 
     public Gerente(String nome, double salarioBase) {
         super(nome, salarioBase);
@@ -11,8 +9,6 @@ public class Gerente extends Funcionario{
 
     @Override
     public double getSalario(Projeto projeto){
-        //TypeCast para ambos darem o mesmo resultado de certeza
-        //To obrigando ao resultado ser double
         salarioBase = salarioBase*(1+ (double) projeto.getQuantidadeFuncionarios()/100);
 
         if (projeto.isFinalizado()) {
@@ -21,7 +17,4 @@ public class Gerente extends Funcionario{
         return salarioBase;
     }
 
-    public String getNome() {
-        return nome;
-    }
 }
