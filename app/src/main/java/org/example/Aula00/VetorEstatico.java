@@ -33,11 +33,43 @@ public class VetorEstatico {
     }
 
     public void removerFinal() {
-        elementos[tamanho -1] = null;
+        if (tamanho > 0) {
+
+            elementos[tamanho - 1] = null;
+            tamanho--;
+        } else {
+            throw new IndexOutOfBoundsException("O vetor está vazio");
+        }
+    }
+
+    public void remover(int indice) {
+        if (indice < 0 || indice >= tamanho) {
+            throw new IndexOutOfBoundsException("Posição incorreta");
+        }
+        for (int i = indice; i < tamanho; i++) {
+            elementos[i] = elementos[i+1];
+        }
+        elementos[tamanho-1] = null;
         tamanho--;
     }
 
+    public void remover(String elemento) {
+        for (int i = 0; i < tamanho; i++) {
+            if (elementos[i].equals(elemento)) {
+                remover(i);
+            } else {
+                throw new IndexOutOfBoundsException("O elemento não existe dentro do Array");
+            }
+        }
+    }
 
+    public String ler(int indice) {
+        if (indice >= 0 || indice < tamanho) {
+            return elementos[indice];
+        } else {
+            throw new IndexOutOfBoundsException("Posição inválida");
+        }
+    }
 
     public void imprimir() {
         System.out.print("[");

@@ -5,15 +5,15 @@ public class main {
         VetorEstatico vetorEstatico = new VetorEstatico(5);
 
        vetorEstatico.inserir(0,"A");
-       vetorEstatico.inserir(1,"A");
-       vetorEstatico.inserir(2,"A");
-       vetorEstatico.inserir(3,"C");
-       vetorEstatico.inserir(4,"D");
+       vetorEstatico.inserir(1,"B");
+       vetorEstatico.inserir(2,"C");
+       vetorEstatico.inserir(3,"D");
+       vetorEstatico.inserir(4,"E");
        vetorEstatico.removerFinal();
+       vetorEstatico.remover(1);
        vetorEstatico.imprimir();
 
-        System.out.println(vetorEstatico.obterTamanho());
-
-
+        System.out.println("");
+        System.out.println("O tamanho do array é: " + "" +vetorEstatico.obterTamanho());
     }
 }
