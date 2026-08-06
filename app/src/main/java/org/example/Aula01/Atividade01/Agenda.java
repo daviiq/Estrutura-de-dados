@@ -3,11 +3,11 @@ package org.example.Aula01.Atividade01;
 public class Agenda {
 
     private Contato[] contatos;
-    private int tamanho = 10;
+    private int tamanho;
 
     public Agenda(int quantidade) {
-        contatos = new Contato[tamanho];
-        this.tamanho = 10;
+        contatos = new Contato[quantidade];
+        this.tamanho = 0;
     }
 
     public void inserir(int indice, Contato contato) {
@@ -42,8 +42,13 @@ public class Agenda {
     }
 
     public void remover(Contato contato) {
+        if (contatos.length == 0) {
+            System.out.println("A lista está vazia");
+        }
+
         for (int i = 0; i < tamanho; i++) {
-            if (contatos.equals(contato)) {
+            if (contatos[i].equals(contato)) {
+                System.out.println("O contato foi removido" + contato);
                 remover(i);
             } else {
                 throw new IndexOutOfBoundsException("O Contato não está na lista");
@@ -51,11 +56,40 @@ public class Agenda {
         }
     }
 
-    public Contato buscarContato(Contato contato) {
+   public String buscarContato(String nome, String telefone) {
+       for (int i = 0; i < contatos.length; i++) {
+           if (contatos[i] != null && contatos[i].equals(nome) || contatos[i].equals(telefone)){
+               return "Contatos";
+           }
+       }
+       return "";
+   }
+
+    public void listarContatos() {
+
+        if (contatos.length == 0) {
+            System.out.println("A lista está vazia");
+        }
+
+        System.out.print("[");
+        System.out.println("");
+        for (int i = 0; i <tamanho - 1; i++) {
+            System.out.println(contatos[i].toString());
+        }
+        System.out.print("]");
+    }
+
+    public void inserirContatos(Contato[] contatosNovos) {
 
     }
 
-    public Contato listarContatos() {
+    public void buscaPrefixo(String nome) {
+        for (int i = 0; i < tamanho; i++) {
+            if (contatos[i].getNome().startsWith(nome)) {
+                return;
+            } else {
+                System.out.println("O Contato não está na lista");
+            }
+        }
     }
-
 }
