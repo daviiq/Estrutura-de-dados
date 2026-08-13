@@ -1,18 +1,39 @@
 package org.example.Aula01.Atividade01;
 
-public class Agenda {
+public class Agenda<T> {
 
-    private Contato[] contatos;
+    private T[] contatos;
     private int tamanho;
 
+    @SuppressWarnings("unchecked")
     public Agenda(int quantidade) {
-        contatos = new Contato[quantidade];
+        contatos = (T[]) new Object[quantidade];
         this.tamanho = 0;
     }
 
-    public void inserir(int indice, Contato contato) {
+    @SuppressWarnings("unchecked")
+    private void expandir() {
+        T[] novoVetor = (T[]) new Object[contatos.length * 2];
+        //Insere os contatos nas posições do novo Vetor
+        for (int i = 0; i < contatos.length; i++) {
+            novoVetor[i] = contatos[i];
+        }
+        contatos = novoVetor;
+    }
+
+    private void reduzir() {
+        if (tamanho <= contatos.length / 4) {
+            T[] novoVetor = (T[]) new Object[contatos.length / 2];
+            for (int i = 0; i < tamanho; i++) {
+                novoVetor[i] = contatos[i];
+            }
+            contatos = novoVetor;
+        }
+    }
+
+    public void inserir(int indice, T contato) {
         if (tamanho > contatos.length) {
-            throw new IndexOutOfBoundsException("A lista está cheia");
+            expandir();
         }
 
         if (indice < 0 || indice > contatos.length) {
@@ -29,18 +50,6 @@ public class Agenda {
         tamanho++;
     }
 
-    public void remover(int indice) {
-        if (indice < 0 || indice > contatos.length) {
-            throw new IndexOutOfBoundsException("Posição Inválida");
-        }
-
-        for (int i = indice; i < tamanho; i++) {
-            contatos[i] = contatos[i + 1];
-        }
-        contatos[tamanho - 1] = null;
-        tamanho--;
-    }
-
     public void remover(Contato contato) {
         if (contatos.length == 0) {
             System.out.println("A lista está vazia");
@@ -49,7 +58,7 @@ public class Agenda {
         for (int i = 0; i < tamanho; i++) {
             if (contatos[i].equals(contato)) {
                 System.out.println("O contato foi removido" + contato);
-                remover(i);
+                remover(contato);
             } else {
                 throw new IndexOutOfBoundsException("O Contato não está na lista");
             }
@@ -79,17 +88,13 @@ public class Agenda {
         System.out.print("]");
     }
 
-    public void inserirContatos(Contato[] contatosNovos) {
-
+    public void inserirContatos(T[] contatosNovos) {
+        for (int i = 0; i < contatos.length; i++) {
+            inserir(i,(T) contatosNovos);
+        }
     }
 
     public void buscaPrefixo(String nome) {
-        for (int i = 0; i < tamanho; i++) {
-            if (contatos[i].getNome().startsWith(nome)) {
-                return;
-            } else {
-                System.out.println("O Contato não está na lista");
-            }
-        }
+        
     }
 }
