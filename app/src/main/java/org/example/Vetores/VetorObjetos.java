@@ -1,0 +1,24 @@
+package org.example.Vetores;
+
+public class VetorObjetos {
+
+    private Object[] elementos;
+    private int tamanho;
+
+    public VetorObjetos(int capacidade) {
+        elementos = new Object[capacidade];
+        this.tamanho = 0;
+    }
+
+    public void inserir(Object elemento) {
+        if (tamanho == elementos.length) {
+            throw new IndexOutOfBoundsException("Tá cheio");
+        }
+        elementos[tamanho] = elemento;
+        tamanho++;
+    }
+
+    public Object ler(int indice) {
+        return elementos[indice];
+    }
+}

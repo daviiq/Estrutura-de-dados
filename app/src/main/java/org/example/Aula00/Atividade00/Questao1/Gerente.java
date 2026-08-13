@@ -1,4 +1,4 @@
-package org.example.Atividade00.Questao1;
+package org.example.Aula00.Atividade00.Questao1;
 
 public class Gerente extends Funcionario{
 

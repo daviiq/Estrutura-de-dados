@@ -1,4 +1,7 @@
-package org.example.Aula01.Atividade01;
+package org.example.Aula01;
+
+import org.example.Aula01.Atividade01.Agenda;
+import org.example.Aula01.Atividade01.Contato;
 
 public class main {
     static void main() {

@@ -1,6 +1,4 @@
-package org.example.Atividade00.Questao1;
-
-import java.util.FormatterClosedException;
+package org.example.Aula00.Atividade00.Questao1;
 
 public class main {
     static void main() {
