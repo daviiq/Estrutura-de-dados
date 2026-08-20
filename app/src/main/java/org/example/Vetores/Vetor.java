@@ -41,6 +41,10 @@ public class Vetor<T extends Comparable<T>> {
         return -1;
     }
 
+    public void inserirFinal(T elemento) {
+        inserir(tamanho, elemento);
+    }
+
     public void inserir(int indice, T elemento) {
         if (tamanho == elementos.length) {
             expandir();
@@ -53,7 +57,7 @@ public class Vetor<T extends Comparable<T>> {
             throw new IndexOutOfBoundsException("Posição inválida");
         }
 
-        for (int i = 0; i < tamanho; i++) {
+        for (int i = indice; i < tamanho - 1; i++) {
             elementos[i] = elementos[i+1];
         }
         elementos[tamanho - 1] = null;
@@ -66,12 +70,40 @@ public class Vetor<T extends Comparable<T>> {
             elementos[i] = null;
         }
     }
+    
+    public void listarElementos() {
+        if (elementos.length == 0) {
+            throw new IndexOutOfBoundsException("A lista de elementos está vazia");
+        }
+        for (int i = 0; i < elementos.length - 1; i++) {
+            System.out.print("");
+            System.out.println("[ " + i + "]" + " " + elementos[i]);
+        }
+    }
+
+    public void ordena() {
+        for (int i = 0; i < elementos.length - 1; i++) {
+            for (int j = 0; j < elementos.length -1; j++) {
+                T proximo = elementos[j + i];
+                if (elementos[j].compareTo(proximo) > 0 ) {
+                    //Faz o Swap das posições trocando de um temporário para a posição especifica
+                    T temporario = elementos[j];
+                    elementos[j] = elementos[j + 1];
+                    elementos[j + 1] = temporario;
+                }
+            }
+        }
+    }
 
     //Basicamente o método localizar. Tendo como complexidade O(N) (Quanto maior o Array, mais demora)
-    public int buscaLinear( T[] elementos, T valor ) {
+    public int buscaLinearOrdenada( T[] elementos, T valor ) {
         for (int i = 0; i < elementos.length; i++) {
             if (elementos[i] == valor) {
                 return i;
+            } // Faz uma ordenação simples, se o valor for maior que o procurado,
+            // já para de procurar na hora
+            if (elementos[i].compareTo(valor) > 0) {
+                return - 1;
             }
         }
         return -1;
@@ -80,10 +112,11 @@ public class Vetor<T extends Comparable<T>> {
     //Possui complexidade O(logN), tornando assim mais rápido na procura, pois divide o Array no meio
     //Porém, o array PRECISA estar ordenado para funcionar
     public int buscaBinaria(T[] elementos, T valor) {
+        ordena();
         int inicio = 0;
         int fim = elementos.length - 1;
 
-        while (inicio < fim) {
+        while (inicio <= fim) {
             int meio = inicio + (fim - inicio) / 2;
 
             if (elementos[meio] == null) {
