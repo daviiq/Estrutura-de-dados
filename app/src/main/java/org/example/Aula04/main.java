@@ -27,13 +27,10 @@ public class main {
         caixaFoda.guardar("Algo foda aqui embaixo");
         System.out.println(caixaFoda.abrir());
 
+        //Vetores tipo <T>
         Caixa<Integer> caixaNum = new Caixa<>();
         caixaNum.guardar(67);
         System.out.println(caixaNum.abrir());
-
-        Vetor<Produto> estoque = new Vetor<>(10);
-        estoque.inserir(1,new Produto(1,"Pão",7.99));
-        estoque.inserir(2,new Produto(2,"PEDRA",7.99));
 
         List<String> listas = new ArrayList<>();
     }

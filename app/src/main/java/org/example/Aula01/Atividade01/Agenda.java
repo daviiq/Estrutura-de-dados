@@ -20,7 +20,7 @@ public class Agenda<T> {
         }
         contatos = novoVetor;
     }
-
+    @SuppressWarnings("unchecked")
     private void reduzir() {
         if (tamanho <= contatos.length / 4) {
             T[] novoVetor = (T[]) new Object[contatos.length / 2];
@@ -29,6 +29,15 @@ public class Agenda<T> {
             }
             contatos = novoVetor;
         }
+    }
+
+    public int localizar(T contato) {
+        for (int i = 0; i < tamanho; i++) {
+            if (contatos[i] != null && contatos[i].equals(contato)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void inserir(int indice, T contato) {
@@ -42,7 +51,7 @@ public class Agenda<T> {
 
         for (int i = tamanho; i > indice; i--) {
             if (contatos[i].equals(contato)) {
-                throw new IndexOutOfBoundsException("O contato já está cadastado");
+                throw new IllegalArgumentException("O contato já está cadastado");
             }
             contatos[i] = contatos[i - 1];
         }
@@ -50,51 +59,61 @@ public class Agenda<T> {
         tamanho++;
     }
 
-    public void remover(Contato contato) {
+    @SuppressWarnings("unchecked")
+    public void remover(T contato) {
         if (contatos.length == 0) {
             System.out.println("A lista está vazia");
         }
 
-        for (int i = 0; i < tamanho; i++) {
-            if (contatos[i].equals(contato)) {
-                System.out.println("O contato foi removido" + contato);
-                remover(contato);
-            } else {
-                throw new IndexOutOfBoundsException("O Contato não está na lista");
-            }
+        int indice = localizar(contato);
+        if (indice == -1) {
+            System.out.println("Contato não encontrado");
+            return;
         }
+
+        //levanta todo mundo e muda vai uma cadeira pra esquerda e deixa o índice no final
+        for (int i = indice; i < tamanho - 1 ; i++) {
+            contatos[i] = contatos[i + 1];
+        }
+
+        //Remove o índice lá no final
+        contatos[tamanho - 1] = null;
+        tamanho--;
+        reduzir();
+        System.out.println("Contato removido");
     }
 
-   public String buscarContato(String nome, String telefone) {
-       for (int i = 0; i < contatos.length; i++) {
-           if (contatos[i] != null && contatos[i].equals(nome) || contatos[i].equals(telefone)){
-               return "Contatos";
-           }
-       }
-       return "";
-   }
+    @SuppressWarnings("unchecked")
+   public T buscarContato(String nome, String telefone) {
+        Contato contatoEncontrado = new Contato(nome,telefone);
+        int indice = localizar( (T) contatoEncontrado);
+
+        if (indice != -1) {
+            return contatos[indice];
+        }
+        System.out.println("Contato não encontrado");
+        return null;
+    }
 
     public void listarContatos() {
-
         if (contatos.length == 0) {
-            System.out.println("A lista está vazia");
+            throw new IndexOutOfBoundsException("A lista de Contatos está vazia");
         }
-
-        System.out.print("[");
-        System.out.println("");
-        for (int i = 0; i <tamanho - 1; i++) {
-            System.out.println(contatos[i].toString());
+        for (int i = 0; i < contatos.length - 1; i++) {
+            System.out.print("");
+            System.out.println("[ " + i + "]" + " " + contatos[i]);
         }
-        System.out.print("]");
     }
 
+    /*public T atualizarContato()  {
+
+    }
+     */
+
+    @SuppressWarnings("unchecked")
     public void inserirContatos(T[] contatosNovos) {
-        for (int i = 0; i < contatos.length; i++) {
-            inserir(i,(T) contatosNovos);
-        }
     }
 
     public void buscaPrefixo(String nome) {
-        
     }
 }
