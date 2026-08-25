@@ -7,13 +7,13 @@ public class Vetor<T extends Comparable<T>> {
 
     @SuppressWarnings("unchecked")
     public Vetor(int quantidade) {
-        elementos = (T[]) new Object[quantidade];
+        elementos = (T[]) new Comparable[quantidade];
         this.tamanho = 0;
     }
 
     @SuppressWarnings("unchecked")
     private void expandir() {
-        T[] novoVetor = (T[]) new Object[elementos.length * 2];
+        T[] novoVetor = (T[]) new Comparable[elementos.length * 2];
         //Insere os elementos nas posições do novo Vetor
         for (int i = 0; i < elementos.length; i++) {
             novoVetor[i] = elementos[i];
