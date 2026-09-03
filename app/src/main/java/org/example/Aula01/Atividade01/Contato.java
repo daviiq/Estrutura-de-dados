@@ -1,6 +1,6 @@
 package org.example.Aula01.Atividade01;
 
-public class Contato {
+public class Contato implements Comparable<Contato> {
 
     private String nome;
     private String telefone;

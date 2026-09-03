@@ -1,68 +1,46 @@
-package org.example.Vetores;
+package org.example.AtividadeListaDeListas;
 
-public class Vetor<T extends Comparable<T>> {
+import org.example.Aula01.Atividade01.Contato;
+import org.example.Vetores.Vetor;
 
-    private T[] elementos;
+public class AgendaListas {
+    private Vetor<Contato> contatos[];
     private int tamanho;
-    private static int comparacoes = 0;
-
-    @SuppressWarnings("unchecked")
-    public Vetor(int quantidade) {
-        elementos = (T[]) new Comparable[quantidade];
-        this.tamanho = 0;
-    }
-
-    @SuppressWarnings("unchecked")
-    private void expandir() {
-        T[] novoVetor = (T[]) new Comparable[elementos.length * 2];
-        //Insere os elementos nas posições do novo Vetor
-        for (int i = 0; i < elementos.length; i++) {
-            novoVetor[i] = elementos[i];
-        }
-        elementos = novoVetor;
+    
+    public AgendaListas() {
+        contatos = new Vetor[26];
     }
 
     public int tamanhoVetor(){
         return this.tamanho;
     }
 
-    @SuppressWarnings("unchecked")
-    private void reduzir() {
-        if (tamanho <= elementos.length / 4) {
-            T[] novoVetor = (T[]) new Object[elementos.length / 2];
-            for (int i = 0; i < tamanho; i++) {
-                novoVetor[i] = elementos[i];
-            }
-            elementos = novoVetor;
-        }
-    }
-
-    public int localizar(T elemento) {
+    public int localizar(Contato contato) {
         for (int i = 0; i < tamanho; i++) {
-            if (elementos[i] != null && elementos[i].equals(elemento)) {
+            if (contatos[i] != null && contatos[i].equals(contato)) {
                 return i;
             }
         }
         return -1;
     }
 
-    public void inserirFinal(T elemento) {
-        inserir(tamanho, elemento);
+    public void inserirFinal(Contato contato) {
+        inserir(tamanho, contato);
     }
 
-    public void inserir(int indice, T elemento) {
-        if (tamanho == elementos.length) {
-            expandir();
+    public void inserir(int indice, Vetor<Contato> contato) {
+        if (tamanho == contatos.length) {
+            throw new IndexOutOfBoundsException("Vetor cheio");
         }
-        elementos[indice] = elemento;
+        contatos[indice] = contato;
         tamanho++;
     }
 
-    public void inserirOrdenado(T elemento) {
-        if(tamanho == elementos.length) {
-            expandir();
+    public void inserirOrdenado(Contato contato) {
+        if(tamanho == contatos.length) {
+            throw new IndexOutOfBoundsException("Vetor cheio");;
         }
-        inserir(tamanho,elemento);
+        inserir(tamanho,contato);
         tamanho++;
         ordena();
     }
@@ -72,56 +50,46 @@ public class Vetor<T extends Comparable<T>> {
         }
 
         for (int i = indice; i < tamanho - 1; i++) {
-            elementos[i] = elementos[i+1];
+            contatos[i] = contatos[i+1];
         }
-        elementos[tamanho - 1] = null;
+        contatos[tamanho - 1] = null;
         tamanho--;
-        reduzir();
     }
 
     public void limpar() {
-        for (int i = 0; i < elementos.length; i++) {
-            elementos[i] = null;
+        for (int i = 0; i < contatos.length; i++) {
+            contatos[i] = null;
         }
     }
-    
-    public void listarElementos() {
-        if (elementos.length == 0) {
-            throw new IndexOutOfBoundsException("A lista de elementos está vazia");
+
+    public void listarcontatos() {
+        if (contatos.length == 0) {
+            throw new IndexOutOfBoundsException("A lista de contatos está vazia");
         }
-        for (int i = 0; i < elementos.length - 1; i++) {
+        for (int i = 0; i < contatos.length - 1; i++) {
             System.out.print("");
-            System.out.println("[ " + i + "]" + " " + elementos[i]);
+            System.out.println("[ " + i + "]" + " " + contatos[i]);
         }
     }
 
     public T ler(int indice) {
         if (indice >= 0 || indice < tamanho) {
-            return elementos[indice];
+            return contatos[indice];
         } else {
             throw new IndexOutOfBoundsException("Posição inválida");
         }
     }
 
-    public static int quantidadeComparacoes() {
-        return comparacoes;
-    }
-
-    public void zerarComparacoes() {
-        comparacoes = 0;
-    }
-
     public void ordena() {
-        zerarComparacoes();
         for (int i = 0; i < tamanho - 1; i++) {
             for (int j = 0; j < tamanho -1 -i; j++) {
-                T atual = elementos[j];
-                T proximo = elementos[j + 1];
-                if (elementos[j].compareTo(proximo) > 0 ) {
+                Contato atual = contatos[j];
+                Contato proximo = contatos[j + 1];
+                if (contatos[j].compareTo(proximo) > 0 ) {
                     //Faz o Swap das posições trocando de um temporário para a posição especifica
                     if (atual != null && proximo != null && atual.compareTo(proximo) > 0) {
-                        elementos[j] = proximo;
-                        elementos[j + 1] = atual;
+                        contatos[j] = proximo;
+                        contatos[j + 1] = atual;
                         comparacoes++;
                     }
                 }
@@ -133,14 +101,14 @@ public class Vetor<T extends Comparable<T>> {
     public int buscaLinearOrdenada(T valor ) {
         zerarComparacoes();
         for (int i = 0; i < tamanho; i++) {
-            if (elementos[i] != null) {
-                if (elementos[i].equals(valor)) {
+            if (contatos[i] != null) {
+                if (contatos[i].equals(valor)) {
                     return i;
                 }
 
                 // Faz uma ordenação simples, se o valor for maior que o procurado,
                 // já para de procurar na hora
-                if (elementos[i].compareTo(valor) > 0) {
+                if (contatos[i].compareTo(valor) > 0) {
                     return -1;
                 }
             }
@@ -158,14 +126,14 @@ public class Vetor<T extends Comparable<T>> {
         while (inicio <= fim) {
             int meio = inicio + (fim - inicio) / 2;
 
-            if (elementos[meio] == null) {
+            if (contatos[meio] == null) {
                 return -1; //Evita o NullPointerExcpetion caso tenha buracos na lista
             }
 
             //Como o tipo T não aceita o operador < utilizamos o compareTo para isso
             //Importante destacar que a classe precisa ser extendida para o Comparable<T>
 
-            int comparacao = elementos[meio].compareTo(valor);
+            int comparacao = contatos[meio].compareTo(valor);
             comparacoes++;
 
             //Procura no meio
@@ -183,6 +151,8 @@ public class Vetor<T extends Comparable<T>> {
                 fim = meio - 1;
             }
         }
-        return -1; //Caso não encontre o elemento
+        return -1; //Caso não encontre o contato
     }
 }
+
+//array agenda[] = new array[26]
