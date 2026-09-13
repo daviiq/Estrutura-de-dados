@@ -1,0 +1,13 @@
+Questão 1)
+
+Pois assim, ele já faz uma espécie de filtro. Com isso, ele identifica rapidamente
+a inicial do nome e acessa diretamente o Vetor correspondente àquela letra, não
+precisando procurar em todos os contatos.
+
+Questão 2)
+
+Se a maioria dos contatos começar com a mesma letra, o Vetor dessa letra
+ficará muito grande. Apesar de o sistema ainda acessar diretamente o vetor daquela letra,
+a busca dentro dele poderá ficar mais demorada. Porém, como os contatos são armazenados
+de forma ordenada e a implementação utiliza busca binária, o impacto é menor do que
+seria em uma busca sequencial ( isso falando dentro da busca da lista ).
