@@ -25,4 +25,9 @@ public class Contato implements Comparable<Contato> {
                 ", telefone='" + telefone + '\'' +
                 '}';
     }
+
+    @Override
+    public int compareTo(Contato o) {
+        return 0;
+    }
 }

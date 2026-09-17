@@ -185,4 +185,8 @@ public class Vetor<T extends Comparable<T>> {
         }
         return -1; //Caso não encontre o elemento
     }
+
+    public int obterTamanho() {
+        return this.tamanho;
+    }
 }
