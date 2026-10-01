@@ -81,14 +81,15 @@ public class Servidor {
             }
         }
     }
-    public String relatorio() {
+
+    public void relatorio() {
         double porcentagemPerda = 0;
         if (totalRegGeradas > 0) {
             porcentagemPerda = ((double) totalRegPerdidas/totalRegGeradas) * 100;
         }
-        return "Total requisicoes Geradas: " + totalRegGeradas + "\n" +
+        System.out.println("Total requisicoes Geradas: " + totalRegGeradas + "\n" +
                 "Total requisicoes Atendidas: " + totalRegAtendidas + "\n" +
                 "Total requisicoes Perdidas: " + totalRegPerdidas + "\n" +
-                "Este servidor teve uma porcentagem de " + porcentagemPerda +"% de perda";
+                "Este servidor teve uma porcentagem de " + porcentagemPerda +"% de perda");
     }
 }
