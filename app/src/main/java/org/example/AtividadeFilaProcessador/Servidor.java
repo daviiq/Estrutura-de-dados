@@ -1,5 +1,5 @@
 package org.example.AtividadeFilaProcessador;
-import org.example.FIlas.Fila;
+import org.example.Filas.Fila;
 import java.util.Random;
 
 public class Servidor {
