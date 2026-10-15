@@ -36,11 +36,23 @@ Previsão ANTES de executar (posições físicas, início, fim, tamanho e ordem 
 
 Resultado observado:
 
+- Inicialmente o esperado era que não fosse possível fazer o processo coircular
+ao rodar os testes foi visto que isto de fato ocorria mesmo
+
 Causa da falha e correção:
+
+- Não consegui obter as correçõs das falhas... Mas acredito que o
+método está correto
 
 Como distinguir cheia de vazia? Como obter O(1) nas operações?
 
+- É possível verificar se a fila está cheia ou vazia a partir dos métodos
+Booleans criados, onde podemos verificar através do lenght ou apenas retornando
+o tamanho
+
 Quem programou / quem testou / quem explicou:
+
+- A questão 2 Davi Israel Quirino foi quem programou e testou a mesma
 
 ## Missão 3 — Escalonador
 Previsão ANTES de executar (turno, processo, executado, restante, fila):
