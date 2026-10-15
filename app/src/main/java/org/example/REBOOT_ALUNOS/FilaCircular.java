@@ -15,10 +15,12 @@ public class FilaCircular {
     public int tamanho() { return tamanho; }
     public boolean vazia() { return tamanho == 0; }
     public boolean cheia() { return fim == dados.length - 1; }
+
     public void inserir(String valor) {
         if (valor == null) throw new IllegalArgumentException("valor nulo");
         if (cheia()) throw new IllegalStateException("fila cheia");
-        fim = fim + 1;
+
+        fim = (fim + 1) % dados.length;
         dados[fim] = valor;
         tamanho++;
     }
@@ -26,7 +28,7 @@ public class FilaCircular {
         if (vazia()) throw new NoSuchElementException("fila vazia");
         String valor = dados[inicio];
         dados[inicio] = null;
-        inicio = inicio + 1;
+        inicio = (inicio - 1) % dados.length;
         tamanho--;
         return valor;
     }

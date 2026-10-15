@@ -60,6 +60,10 @@ public class Testes {
             try { filtro=Integer.parseInt(args[0]); } catch(NumberFormatException e) { filtro=-1; }
             if(filtro<1||filtro>3) {System.err.println("Use: java -cp build Testes [1|2|3|todas]"); System.exit(2);}
         }
+        System.out.println("");
+        System.out.println("Exercicios Lista: ");
+        System.out.println("");
+
         teste(1,"Inserir no fim","Capacidade 6; inserir 10,20,30 no fim; tamanho 3, capacidade 6.",()->{
             Inventario v=inventario(6,10,20,30); vetor(new int[]{10,20,30},v.itens()); igual(3,v.tamanho());igual(6,v.capacidade());
         });
@@ -90,6 +94,11 @@ public class Testes {
         teste(1,"Esvaziar e reutilizar","Remover unico item; rejeitar nova remocao; inserir 99; rejeitar capacidade zero.",()->{
             Inventario v=inventario(1,4);igual(4,v.remover(0));igual(0,v.tamanho());excecao(IndexOutOfBoundsException.class,()->v.remover(0));v.inserir(0,99);vetor(new int[]{99},v.itens());excecao(IllegalArgumentException.class,()->new Inventario(0));
         });
+
+        System.out.println("");
+        System.out.println("Exercicios FilaCircular: ");
+        System.out.println("");
+
         teste(2,"Ordem FIFO","Inserir A,B,C; retirar A,B,C; terminar vazia.",()->saida(fila(4,"A","B","C"),"A","B","C"));
         teste(2,"Consultar nao remove","Frente de A,B e A em duas consultas; tamanho continua 2.",()->{
             FilaCircular f=fila(4,"A","B");igual("A",f.frente());igual("A",f.frente());igual(2,f.tamanho());
@@ -118,6 +127,11 @@ public class Testes {
         teste(2,"Ciclos completos","Capacidade 3; preencher e esvaziar em ordem, por quatro rodadas.",()->{
             FilaCircular f=fila(3);for(int k=0;k<4;k++){for(int i=0;i<3;i++)f.inserir(k+"-"+i);igual(true,f.cheia());for(int i=0;i<3;i++)igual(k+"-"+i,f.remover());igual(true,f.vazia());}
         });
+
+        System.out.println("");
+        System.out.println("Exercicios Escalonador: ");
+        System.out.println("");
+
         teste(3,"Cenario base","Duracoes 5,3,1; q=2; execucao P1,P2,P3,P1,P2,P1; conclusao P3,P2,P1; tempo 9.",()->{
             validar(Escalonador.executar(new String[]{"P1","P2","P3"},new int[]{5,3,1},2),9,"P1,P2,P3,P1,P2,P1","P3,P2,P1");
         });

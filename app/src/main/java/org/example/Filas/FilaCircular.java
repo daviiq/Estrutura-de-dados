@@ -21,7 +21,7 @@ public class FilaCircular<T extends Comparable<T>> {
         /*Torna a fila circular através de uma conta matemática, onde descobrimos o resto
         * Dividindo a capacidade ( elementos.length ), pelo valor
         * */
-        tras = (tras - 1) % elementos.length;
+        tras = (tras + 1) % elementos.length;
         elementos[tras] = elemento;
         tamanho++;
     }
